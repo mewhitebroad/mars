@@ -35,17 +35,8 @@ workflow JointGenotyping {
     File haplotype_database
 
     File eval_interval_list
-    File hapmap_resource_vcf
-    File hapmap_resource_vcf_index
-    File omni_resource_vcf
-    File omni_resource_vcf_index
-    File one_thousand_genomes_resource_vcf
-    File one_thousand_genomes_resource_vcf_index
-    File mills_resource_vcf
-    File mills_resource_vcf_index
-    File axiomPoly_resource_vcf
-    File axiomPoly_resource_vcf_index
-    File dbsnp_resource_vcf = dbsnp_vcf
+   
+File dbsnp_resource_vcf = dbsnp_vcf
     File dbsnp_resource_vcf_index = dbsnp_vcf_index
 
     # ExcessHet is a phred-scaled p-value. We want a cutoff of anything more extreme
@@ -198,10 +189,7 @@ workflow JointGenotyping {
   }
   
   if (run_vets) {
-    String resource_args = " --resource:hapmap,training=true,calibration=true " + hapmap_resource_vcf + 
-      " --resource:omni,training=true,calibration=true " + omni_resource_vcf + 
-      " --resource:1000G,training=true " + one_thousand_genomes_resource_vcf +
-      " --resource:mills,training=true,calibration=true " + mills_resource_vcf + " "
+    String resource_args = " --resource:dbsnp,known=true,training=false " + dbsnp_resource_vcf + " "
     String extract_extra_args = if defined(targets_interval_list) then " -L " + targets_interval_list + " " else "" #only train the model over the targets, apply the model to everything
 
     call Filtering.JointVcfFiltering as TrainAndApplyVETS {
@@ -226,10 +214,6 @@ workflow JointGenotyping {
         tranches_filename = callset_name + ".indels.tranches",
         recalibration_tranche_values = select_first([indel_recalibration_tranche_values]),
         recalibration_annotation_values = select_first([indel_recalibration_annotation_values]),
-        mills_resource_vcf = mills_resource_vcf,
-        mills_resource_vcf_index = mills_resource_vcf_index,
-        axiomPoly_resource_vcf = axiomPoly_resource_vcf,
-        axiomPoly_resource_vcf_index = axiomPoly_resource_vcf_index,
         dbsnp_resource_vcf = dbsnp_resource_vcf,
         dbsnp_resource_vcf_index = dbsnp_resource_vcf_index,
         use_allele_specific_annotations = allele_specific_annotations,
@@ -247,12 +231,6 @@ workflow JointGenotyping {
           recalibration_annotation_values = snp_recalibration_annotation_values,
           downsampleFactor = select_first([snp_vqsr_downsampleFactor]),
           model_report_filename = callset_name + ".snps.model.report",
-          hapmap_resource_vcf = hapmap_resource_vcf,
-          hapmap_resource_vcf_index = hapmap_resource_vcf_index,
-          omni_resource_vcf = omni_resource_vcf,
-          omni_resource_vcf_index = omni_resource_vcf_index,
-          one_thousand_genomes_resource_vcf = one_thousand_genomes_resource_vcf,
-          one_thousand_genomes_resource_vcf_index = one_thousand_genomes_resource_vcf_index,
           dbsnp_resource_vcf = dbsnp_resource_vcf,
           dbsnp_resource_vcf_index = dbsnp_resource_vcf_index,
           use_allele_specific_annotations = allele_specific_annotations,
@@ -269,12 +247,6 @@ workflow JointGenotyping {
             recalibration_tranche_values = select_first([snp_recalibration_tranche_values]),
             recalibration_annotation_values = snp_recalibration_annotation_values,
             model_report = SNPsVariantRecalibratorCreateModel.model_report,
-            hapmap_resource_vcf = hapmap_resource_vcf,
-            hapmap_resource_vcf_index = hapmap_resource_vcf_index,
-            omni_resource_vcf = omni_resource_vcf,
-            omni_resource_vcf_index = omni_resource_vcf_index,
-            one_thousand_genomes_resource_vcf = one_thousand_genomes_resource_vcf,
-            one_thousand_genomes_resource_vcf_index = one_thousand_genomes_resource_vcf_index,
             dbsnp_resource_vcf = dbsnp_resource_vcf,
             dbsnp_resource_vcf_index = dbsnp_resource_vcf_index,
             use_allele_specific_annotations = allele_specific_annotations,
@@ -300,12 +272,6 @@ workflow JointGenotyping {
           tranches_filename = callset_name + ".snps.tranches",
           recalibration_tranche_values = select_first([snp_recalibration_tranche_values]),
           recalibration_annotation_values = snp_recalibration_annotation_values,
-          hapmap_resource_vcf = hapmap_resource_vcf,
-          hapmap_resource_vcf_index = hapmap_resource_vcf_index,
-          omni_resource_vcf = omni_resource_vcf,
-          omni_resource_vcf_index = omni_resource_vcf_index,
-          one_thousand_genomes_resource_vcf = one_thousand_genomes_resource_vcf,
-          one_thousand_genomes_resource_vcf_index = one_thousand_genomes_resource_vcf_index,
           dbsnp_resource_vcf = dbsnp_resource_vcf,
           dbsnp_resource_vcf_index = dbsnp_resource_vcf_index,
           use_allele_specific_annotations = allele_specific_annotations,
