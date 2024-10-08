@@ -1,0 +1,14 @@
+  version: 1.0
+  
+  workflows:
+  name: JointGenotypingTasks_mars.wdl
+    subclass: WDL
+    primaryDescriptorPath: /mars/JointGenotypingTasks_mars.wdl
+    
+  name: JointGenotyping_mars.wdl
+    subclass: WDL
+    primaryDescriptorPath: /mars/JointGenotyping_mars.wdl
+
+  name: JointVcfFiltering_mars.wdl
+    subclass: WDL
+    primaryDescriptorPath: /mars/JointVcfFiltering_mars.wdl
