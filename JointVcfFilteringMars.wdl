@@ -314,4 +314,11 @@ task ScoreVariantAnnotations {
         File? scores_hdf5 = "~{output_prefix}.score.scores.hdf5"        # this file will only be produced if the number of sites scored is nonzero
         File? monitoring_log = "monitoring.log"
     }
+
+    meta {
+        author: "Michelle White"
+        email: "mwhite@broadinstitute.org"
+        description: "## VCF filtering for import into Joint Genotyping Pipeline."
+    }
+
 }
