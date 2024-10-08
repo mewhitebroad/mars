@@ -4,7 +4,7 @@ version 1.0
 task CheckSamplesUnique {
   input {
     File sample_name_map
-    Int sample_num_threshold = 50
+    Int sample_num_threshold = 10
 
     Int machine_mem_mb = 1000
     Int disk_size_gb = 10
@@ -327,12 +327,7 @@ task IndelsVariantRecalibrator {
 
     File sites_only_variant_filtered_vcf
     File sites_only_variant_filtered_vcf_index
-
-    File mills_resource_vcf
-    File axiomPoly_resource_vcf
     File dbsnp_resource_vcf
-    File mills_resource_vcf_index
-    File axiomPoly_resource_vcf_index
     File dbsnp_resource_vcf_index
     Boolean use_allele_specific_annotations
     Int max_gaussians = 4
@@ -356,8 +351,6 @@ task IndelsVariantRecalibrator {
       ~{true='--use-allele-specific-annotations' false='' use_allele_specific_annotations} \
       -mode INDEL \
       --max-gaussians ~{max_gaussians} \
-      -resource:mills,known=false,training=true,truth=true,prior=12 ~{mills_resource_vcf} \
-      -resource:axiomPoly,known=false,training=true,truth=false,prior=10 ~{axiomPoly_resource_vcf} \
       -resource:dbsnp,known=true,training=false,truth=false,prior=2 ~{dbsnp_resource_vcf}
   >>>
 
@@ -390,14 +383,7 @@ task SNPsVariantRecalibratorCreateModel {
 
     File sites_only_variant_filtered_vcf
     File sites_only_variant_filtered_vcf_index
-
-    File hapmap_resource_vcf
-    File omni_resource_vcf
-    File one_thousand_genomes_resource_vcf
     File dbsnp_resource_vcf
-    File hapmap_resource_vcf_index
-    File omni_resource_vcf_index
-    File one_thousand_genomes_resource_vcf_index
     File dbsnp_resource_vcf_index
     Boolean use_allele_specific_annotations
     Int max_gaussians = 6
@@ -423,9 +409,6 @@ task SNPsVariantRecalibratorCreateModel {
       --sample-every-Nth-variant ~{downsampleFactor} \
       --output-model ~{model_report_filename} \
       --max-gaussians ~{max_gaussians} \
-      -resource:hapmap,known=false,training=true,truth=true,prior=15 ~{hapmap_resource_vcf} \
-      -resource:omni,known=false,training=true,truth=true,prior=12 ~{omni_resource_vcf} \
-      -resource:1000G,known=false,training=true,truth=false,prior=10 ~{one_thousand_genomes_resource_vcf} \
       -resource:dbsnp,known=true,training=false,truth=false,prior=7 ~{dbsnp_resource_vcf}
   >>>
 
@@ -456,13 +439,7 @@ task SNPsVariantRecalibrator {
     File sites_only_variant_filtered_vcf
     File sites_only_variant_filtered_vcf_index
 
-    File hapmap_resource_vcf
-    File omni_resource_vcf
-    File one_thousand_genomes_resource_vcf
     File dbsnp_resource_vcf
-    File hapmap_resource_vcf_index
-    File omni_resource_vcf_index
-    File one_thousand_genomes_resource_vcf_index
     File dbsnp_resource_vcf_index
     Boolean use_allele_specific_annotations
     Int max_gaussians = 6
@@ -474,9 +451,6 @@ task SNPsVariantRecalibrator {
   }
 
   Int auto_mem = ceil(2 * size([sites_only_variant_filtered_vcf,
-                              hapmap_resource_vcf,
-                              omni_resource_vcf,
-                              one_thousand_genomes_resource_vcf,
                               dbsnp_resource_vcf],
                       "MiB"))
   Int machine_mem = select_first([machine_mem_mb, if auto_mem < 7000 then 7000 else auto_mem])
@@ -503,9 +477,6 @@ task SNPsVariantRecalibrator {
       -mode SNP \
       ~{model_report_arg} \
       --max-gaussians ~{max_gaussians} \
-      -resource:hapmap,known=false,training=true,truth=true,prior=15 ~{hapmap_resource_vcf} \
-      -resource:omni,known=false,training=true,truth=true,prior=12 ~{omni_resource_vcf} \
-      -resource:1000G,known=false,training=true,truth=false,prior=10 ~{one_thousand_genomes_resource_vcf} \
       -resource:dbsnp,known=true,training=false,truth=false,prior=7 ~{dbsnp_resource_vcf}
   >>>
 
