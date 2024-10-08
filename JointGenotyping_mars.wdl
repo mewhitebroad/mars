@@ -1,7 +1,7 @@
 version 1.0
 
 import "https://github.com/mewhitebroad/mars/blob/main/JointGenotypingTasks_mars.wdl" as Tasks
-import "https://raw.githubusercontent.com/broadinstitute/gatk/4.5.0.0/scripts/vcf_site_level_filtering_wdl/JointVcfFiltering.wdl" as Filtering
+import "https://github.com/mewhitebroad/mars/blob/main/JointVcfFiltering_mars.wdl" as Filtering
 
 
 # Joint Genotyping for hg38 Whole Genomes and Exomes (has not been tested on hg19)
