@@ -1,29 +1,29 @@
 version: 1.2
 workflows:
-  - subclass: WDL
-    primaryDescriptorPath: /mars/JointGenotypingTasks_mars.wdl
-    readMePath: /mars/README.md
-    testParameterFiles:
-    name: JointGenotypingTasks_mars.wdl
-    authors:
+  -  subclass: WDL
+     primaryDescriptorPath: /mars/JointGenotypingTasks_mars.wdl
+     readMePath: /mars/README.md
+     testParameterFiles:
+     name: JointGenotypingTasks_mars.wdl
+     authors:
       - name: Michelle White
         email: mwhite@broadinstitute.org
-    topic: joint genotyping tasks for import into joint genotyping workflow
+     topic: joint genotyping tasks for import into joint genotyping workflow
   - subclass: WDL
     primaryDescriptorPath: /mars/JointGenotyping_mars.wdl
     readMePath: /mars/README.md
     testParameterFiles:
     name: JointGenotyping_mars.wdl
     authors:
-      - name: Michelle White
-        email: mwhite@broadinstitute.org
+     - name: Michelle White
+       email: mwhite@broadinstitute.org
     topic: main joint genotyping workflow
-      - subclass: WDL
+  - subclass: WDL
     primaryDescriptorPath: /mars/JointVcfFiltering_mars.wdl
     readMePath: /mars/README.md
     testParameterFiles:
     name: JointVcfFiltering_mars.wdl
     authors:
-      - name: Michelle White
-        email: mwhite@broadinstitute.org
+     - name: Michelle White
+       email: mwhite@broadinstitute.org
     topic: vcf filtering tasks for import into joint genotyping workflow
