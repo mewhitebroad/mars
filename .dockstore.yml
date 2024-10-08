@@ -1,6 +1,5 @@
 version: 1.2
 workflows:
-    name: JointGenotypingTasks_mars.wdl
     subclass: WDL
     primaryDescriptorPath: /mars/JointGenotypingTasks_mars.wdl
     readMePath: /mars/README.md
@@ -8,7 +7,6 @@ workflows:
       - name: Michelle White
         email: mwhite@broadinstitute.org
     
-    name: JointGenotyping_mars.wdl
     subclass: WDL
     primaryDescriptorPath: /mars/JointGenotyping_mars.wdl
     readMePath: /mars/README.md
@@ -16,7 +14,6 @@ workflows:
       - name: Michelle White
         email: mwhite@broadinstitute.org
         
-    name: JointVcfFiltering_mars.wdl
     subclass: WDL
     primaryDescriptorPath: /mars/JointVcfFiltering_mars.wdl
     readMePath: /mars/README.md
