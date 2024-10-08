@@ -453,5 +453,8 @@ if (cross_check_fingerprints) {
   }
   meta {
     allowNestedInputs: true
+    author: "Michelle White"
+    email: "mwhite@broadinstitute.org"
+    description: "##main Joint Genotyping script"
   }
 }
