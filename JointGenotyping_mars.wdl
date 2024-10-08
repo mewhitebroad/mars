@@ -1,6 +1,6 @@
 version 1.0
 
-import "../../../../../tasks/broad/JointGenotypingTasks.wdl" as Tasks
+import "https://github.com/mewhitebroad/mars/blob/main/JointGenotypingTasks_mars.wdl" as Tasks
 import "https://raw.githubusercontent.com/broadinstitute/gatk/4.5.0.0/scripts/vcf_site_level_filtering_wdl/JointVcfFiltering.wdl" as Filtering
 
 
