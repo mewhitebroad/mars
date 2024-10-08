@@ -1,6 +1,6 @@
 version 1.0
 
-import "https://github.com/mewhitebroad/mars/blob/dockstore-edits/JointGenotypingTasksMars.wdl" as Tasks
+import "https://github.com/mewhitebroad/mars/blob/main/JointGenotypingTasksMars.wdl" as Tasks
 import "https://github.com/mewhitebroad/mars/blob/dockstore-edits/JointVcfFilteringMars.wdl" as Filtering
 
 
