@@ -1,7 +1,7 @@
 version 1.0
 
-import "/JointGenotypingTasksMars.wdl" as Tasks
-import "/JointVcfFilteringMars.wdl" as Filtering
+import "JointGenotypingTasksMars.wdl" as Tasks
+import "JointVcfFilteringMars.wdl" as Filtering
 
 
 # Joint Genotyping for hg38 Whole Genomes and Exomes (has not been tested on hg19)
