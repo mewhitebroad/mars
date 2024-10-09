@@ -451,11 +451,12 @@ if (cross_check_fingerprints) {
     # Output the metrics from crosschecking fingerprints.
     File? crosscheck_fingerprint_check = crosscheck_fingerprint_results
   }
-}
-
-meta {
+  meta {
     allowNestedInputs: true
     author: "Michelle White"
     email: "mwhite@broadinstitute.org"
     description: "##Joint Genotyping Workflow \n This is the WARP human workflow adapted for dog and cat genomes"
   }
+}
+
+
