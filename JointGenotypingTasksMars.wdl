@@ -1114,3 +1114,9 @@ task CalculateAverageAnnotations {
     maxRetries : max_retries
   }
 }
+
+meta {
+        author: "Michelle White"
+        email: "mwhite@broadinstitute.org"
+        description: "## VCF filtering for import into Joint Genotyping Pipeline."
+    }
