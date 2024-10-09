@@ -1,8 +1,8 @@
 version: 1.2
 workflows:
   - subclass: WDL
-    primaryDescriptorPath: mars/JointGenotypingTasksMars.wdl
-    readMePath: mars/README.md
+    primaryDescriptorPath: JointGenotypingTasksMars.wdl
+    readMePath: README.md
     testParameterFiles:
     name: JointGenotypingTasksMars
     authors:
@@ -10,8 +10,8 @@ workflows:
        email: mwhite@broadinstitute.org
     topic: joint genotyping tasks for import into joint genotyping workflow
   - subclass: WDL
-    primaryDescriptorPath: mars/JointGenotypingMars.wdl
-    readMePath: mars/README.md
+    primaryDescriptorPath: JointGenotypingMars.wdl
+    readMePath: README.md
     testParameterFiles:
     name: JointGenotypingMars
     authors:
@@ -19,8 +19,8 @@ workflows:
        email: mwhite@broadinstitute.org
     topic: main joint genotyping workflow
   - subclass: WDL
-    primaryDescriptorPath: mars/JointVcfFilteringMars.wdl
-    readMePath: mars/README.md
+    primaryDescriptorPath: JointVcfFilteringMars.wdl
+    readMePath: README.md
     testParameterFiles:
     name: JointVcfFilteringMars
     authors:
