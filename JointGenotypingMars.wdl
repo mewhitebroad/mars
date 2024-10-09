@@ -455,6 +455,6 @@ if (cross_check_fingerprints) {
     allowNestedInputs: true
     author: "Michelle White"
     email: "mwhite@broadinstitute.org"
-    description: "##main Joint Genotyping script"
+    description: "## Joint Genotyping Workflow \n This is the WARP human workflow adapted for dog and cat genomes"
   }
 }
