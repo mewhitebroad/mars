@@ -36,7 +36,7 @@ workflow JointGenotyping {
 
     File eval_interval_list
    
-File dbsnp_resource_vcf = dbsnp_vcf
+    File dbsnp_resource_vcf = dbsnp_vcf
     File dbsnp_resource_vcf_index = dbsnp_vcf_index
 
     # ExcessHet is a phred-scaled p-value. We want a cutoff of anything more extreme
@@ -455,6 +455,6 @@ if (cross_check_fingerprints) {
     allowNestedInputs: true
     author: "Michelle White"
     email: "mwhite@broadinstitute.org"
-    description: "## Joint Genotyping Workflow \n This is the WARP human workflow adapted for dog and cat genomes"
+    description: "##Joint Genotyping Workflow \n This is the WARP human workflow adapted for dog and cat genomes"
   }
 }
