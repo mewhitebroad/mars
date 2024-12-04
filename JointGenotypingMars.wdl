@@ -189,7 +189,7 @@ workflow JointGenotyping {
   }
   
   if (run_vets) {
-    String resource_args = " --resource:dbsnp,known=true,training=false " + dbsnp_resource_vcf + " "
+    String resource_args = " --resource:dbsnp,known=true,training=true " + dbsnp_resource_vcf + " "
     String extract_extra_args = if defined(targets_interval_list) then " -L " + targets_interval_list + " " else "" #only train the model over the targets, apply the model to everything
 
     call Filtering.JointVcfFiltering as TrainAndApplyVETS {
