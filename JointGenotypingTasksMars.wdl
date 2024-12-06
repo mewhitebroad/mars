@@ -351,7 +351,7 @@ task IndelsVariantRecalibrator {
       ~{true='--use-allele-specific-annotations' false='' use_allele_specific_annotations} \
       -mode INDEL \
       --max-gaussians ~{max_gaussians} \
-      -resource:dbsnp,known=true,training=false,truth=false,prior=2 ~{dbsnp_resource_vcf}
+      -resource:dbsnp,known=true,training=true,truth=false,prior=2 ~{dbsnp_resource_vcf}
   >>>
 
   runtime {
@@ -409,7 +409,7 @@ task SNPsVariantRecalibratorCreateModel {
       --sample-every-Nth-variant ~{downsampleFactor} \
       --output-model ~{model_report_filename} \
       --max-gaussians ~{max_gaussians} \
-      -resource:dbsnp,known=true,training=false,truth=false,prior=7 ~{dbsnp_resource_vcf}
+      -resource:dbsnp,known=true,training=true,truth=false,prior=7 ~{dbsnp_resource_vcf}
   >>>
 
   runtime {
@@ -477,7 +477,7 @@ task SNPsVariantRecalibrator {
       -mode SNP \
       ~{model_report_arg} \
       --max-gaussians ~{max_gaussians} \
-      -resource:dbsnp,known=true,training=false,truth=false,prior=7 ~{dbsnp_resource_vcf}
+      -resource:dbsnp,known=true,training=true,truth=false,prior=7 ~{dbsnp_resource_vcf}
   >>>
 
   runtime {
